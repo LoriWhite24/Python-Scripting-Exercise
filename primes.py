@@ -23,12 +23,14 @@ def findPrimes(a, b):
 
 # Prints the list of primes
 def getPrimes(primes):
-    return ','.join([ n for n in primes])[:-1]
+    if len(primes) == 1:
+        return str(primes[0])
+    return ', '.join([ str(n) for n in primes])
 
 # Gets the user's specified value a
 def getA():
     a = 0.1
-    while str(type(a)) != "int":
+    while type(a) is not int:
         try:
             a = int(input("\nEnter the value you wish to start listing from: "))
         except ValueError:
@@ -38,7 +40,7 @@ def getA():
 # Gets the user's specified value b
 def getB(a):
     b = 0.1
-    while str(type(b)) != "int":
+    while type(b) is not int:
         try:
             b = int(input("\nEnter the value you wish to end the listing at: "))
             checkValue(a, b)
@@ -46,6 +48,7 @@ def getB(a):
             print("You must enter an integer! Please, try again.")
         except AssertionError as e:
             print(f"{e} Please, try again.")
+            b = 0.1
     return b
 
 # Checks if a < b
@@ -74,13 +77,13 @@ def checkOption(option):
 
 # Runs the Prime Checker program
 def primeChecker():
-    print("Welcome to Prime Checker!\nHere you can list all the primes for a specified range of values.\n")
+    print("Welcome to Prime Checker!\nHere you can list all the primes for a specified range of values.")
     exit = False
     while not exit:
         first = getA()
         last = getB(first)
         primes = getPrimes(findPrimes(first, last))
-        print(f"\nThe primes within the range of {first} and {last} are {primes}.\n")
+        print(f"\nThe primes within the range of {first} and {last} are {primes}.")
         exit = getOption()
     print("\nGoodbye!")
 
