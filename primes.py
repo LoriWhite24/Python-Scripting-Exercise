@@ -68,7 +68,7 @@ def check_value(first, last):
      Checks if a < b
     """
     assert (first < last), f"The ending value cannot be equal to or less than the "\
-        + "starting value, {first}!"
+        + f"starting value, {first}!"
 
 def get_option(choice):
     """
